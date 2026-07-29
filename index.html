@@ -299,8 +299,10 @@
   .section-head p{max-width:420px;color:var(--ink-soft);font-size:14px}
   .services{
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:12px;
+    max-width:720px;
+    margin:0 auto;
   }
   .svc{
     display:flex;
@@ -513,12 +515,8 @@ const CONFIG = {
   portfolio: "https://portfolio-seven-beryl-61.vercel.app/",
   msgPrincipal: "Oi! Vi seu Instagram e quero um orçamento.",
   servicos: [
-    { titulo: "Site profissional", desc: "Presença forte para seu negócio.", msg: "Oi! Quero um orçamento de site profissional.", icon: "M5 12h14M5 6h14M5 18h8" },
     { titulo: "Landing page", desc: "Página única focada em vender.", msg: "Oi! Quero uma landing page pra divulgar.", icon: "M4 5h16v14H4zM8 9h8M8 13h5" },
-    { titulo: "Sistema sob medida", desc: "Automatize tarefas e processos.", msg: "Oi! Quero um sistema pro meu negócio.", icon: "M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z" },
     { titulo: "Sistema de agendamento", desc: "Reservas e horários sem confusão.", msg: "Oi! Quero um sistema de agendamento.", icon: "M7 3v3m10-3v3M4 8h16M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2zM8 12h3m3 0h2M8 16h3m3 0h2" },
-    { titulo: "E-commerce", desc: "Loja online para vender melhor.", msg: "Oi! Quero um e-commerce.", icon: "M6 7h15l-2 8H8L6 7ZM6 7 5 3H2m7 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" },
-    { titulo: "Cardápio online", desc: "Para restaurante, bar ou delivery.", msg: "Oi! Quero um cardápio online.", icon: "M6 4h12M8 4v16m8-16v16M5 20h14" },
   ],
 };
 
