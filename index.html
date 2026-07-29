@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>devtech10_ — Sites e sistemas sob medida</title>
+<meta name="description" content="Criação de sites, landing pages, sistemas e cardápios online. Atendimento 100% remoto para todo o Brasil." />
+
+<!-- ==== OPEN GRAPH: como o link aparece quando compartilhado ==== -->
+<meta property="og:title" content="devtech10_ — Sites e sistemas sob medida" />
+<meta property="og:description" content="Peça seu orçamento no WhatsApp. Atendimento remoto para todo o Brasil." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* =====================================================================
+     TOKENS — cores, tipos e espaçamentos ficam centralizados aqui.
+     Se um dia quiser mudar a identidade visual, mexe só nesta seção.
+     ===================================================================== */
+  :root{
+    --bg:#F4F5F7;
+    --surface:#FFFFFF;
+    --ink:#15181E;
+    --ink-soft:#5B616E;
+    --line:#E7E9EE;
+
+    --wa:#25D366;        /* verde oficial do WhatsApp = reconhecimento imediato */
+    --wa-press:#1FB457;
+
+    --accent:#6D5EF6;    /* roxo da marca, usado com parcimônia */
+    --accent-soft:rgba(109,94,246,.12);
+
+    --radius:16px;
+    --shadow:0 1px 2px rgba(21,24,30,.04), 0 8px 24px rgba(21,24,30,.06);
+    --font-display:"Bricolage Grotesque", system-ui, sans-serif;
+    --font-body:"Inter", system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--font-body);
+    background:
+      radial-gradient(120% 60% at 50% -10%, var(--accent-soft), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    padding:24px 18px 40px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{width:100%;max-width:440px;animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.wrap{animation:none}}
+
+  /* ---------- Cabeçalho ---------- */
+  .head{text-align:center;margin-bottom:26px}
+  .mono{
+    width:72px;height:72px;margin:0 auto 14px;border-radius:20px;
+    display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--ink),#2b3040);
+    color:#fff;font-family:var(--font-display);font-weight:800;font-size:30px;
+    box-shadow:var(--shadow);
+  }
+  .handle{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+  .pitch{color:var(--ink-soft);font-size:15px;margin-top:6px}
+  .pitch b{color:var(--ink);font-weight:600}
+  .status{
+    display:inline-flex;align-items:center;gap:7px;margin-top:12px;
+    font-size:13px;color:var(--ink-soft);font-weight:500;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);position:relative}
+  .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--wa);opacity:.35;animation:pulse 2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:.35}100%{transform:scale(2.4);opacity:0}}
+  @media (prefers-reduced-motion:reduce){.dot::after{animation:none}}
+
+  /* ---------- CTA principal ---------- */
+  .primary{
+    display:block;text-decoration:none;color:#06381f;
+    background:var(--wa);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);
+    transition:transform .12s ease, background .12s ease;
+  }
+  .primary:active{transform:scale(.985);background:var(--wa-press)}
+  .primary .row{display:flex;align-items:center;gap:12px}
+  .primary svg{flex:0 0 26px}
+  .primary .label{font-family:var(--font-display);font-weight:700;font-size:17px;line-height:1.2}
+  .primary .sub{font-size:12.5px;opacity:.72;margin-top:2px}
+
+  /* preview da mensagem que já vai digitada (o diferencial) */
+  .preview{
+    margin-top:12px;background:rgba(255,255,255,.6);border-radius:11px;
+    padding:9px 12px;font-size:13px;color:#0a4b2c;line-height:1.35;
+  }
+  .preview span{opacity:.6;font-size:11px;display:block;margin-bottom:2px}
+
+  /* ---------- Divisor ---------- */
+  .or{display:flex;align-items:center;gap:12px;color:var(--ink-soft);font-size:12.5px;margin:22px 2px 14px}
+  .or::before,.or::after{content:"";height:1px;flex:1;background:var(--line)}
+
+  /* ---------- Botões de serviço ---------- */
+  .services{display:grid;gap:10px}
+  .svc{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    text-decoration:none;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:15px 16px;transition:border-color .12s ease, transform .12s ease;
+  }
+  .svc:active{transform:scale(.99)}
+  .svc:hover{border-color:var(--accent)}
+  .svc .t{font-weight:600;font-size:15px}
+  .svc .d{color:var(--ink-soft);font-size:12.5px;margin-top:1px}
+  .svc .arrow{color:var(--accent);flex:0 0 auto;transition:transform .12s ease}
+  .svc:hover .arrow{transform:translateX(3px)}
+
+  /* ---------- Prova / portfólio ---------- */
+  .proof{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:16px;text-decoration:none;
+    color:var(--ink-soft);font-size:14px;font-weight:500;
+    padding:12px;border-radius:var(--radius);
+  }
+  .proof:hover{color:var(--ink)}
+
+  .foot{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:26px}
+
+  /* acessibilidade: foco visível pra quem navega por teclado */
+  a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <div class="mono" id="mono">D</div>
+      <div class="handle" id="handle">@devtech10_</div>
+      <p class="pitch">Sites, sistemas e landing pages <b>sob medida</b>.<br>Atendimento 100% remoto — pra todo o Brasil.</p>
+      <span class="status"><span class="dot"></span> Respondo rápido no WhatsApp</span>
+    </header>
+
+    <!-- CTA principal: preenchido pelo JS a partir do CONFIG -->
+    <a class="primary" id="cta" href="#" data-cta="principal">
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="#06381f" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.5.2.5.4.1.1.1.6-.1 1.1Z"/></svg>
+        <div>
+          <div class="label">Pedir orçamento no WhatsApp</div>
+          <div class="sub">Resposta em minutos, sem compromisso</div>
+        </div>
+      </div>
+      <div class="preview"><span>já vai escrito:</span><em id="previewText"></em></div>
+    </a>
+
+    <div class="or">ou diga direto o que precisa</div>
+
+    <nav class="services" id="services" aria-label="Serviços"></nav>
+
+    <a class="proof" id="portfolio" href="#" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      Ver trabalhos que já entreguei
+    </a>
+
+    <p class="foot">Feito com código próprio • Brasil 🇧🇷</p>
+  </main>
+
+<script>
+/* =======================================================================
+   CONFIG — ⚠️ EDITE AQUI. É o único lugar que você precisa mexer.
+   ======================================================================= */
+const CONFIG = {
+  // Seu número: 55 (Brasil) + DDD + número, SÓ dígitos, sem espaço/traço.
+  // Ex.: São Paulo (11) 91234-5678  ->  "5511912345678"
+  whatsapp: "5521982657128",
+
+  handle: "@devtech10_",
+  monogram: "D", // a letra que aparece no quadradinho do topo
+
+  portfolio: "https://portfolio-seven-beryl-61.vercel.app/",
+
+  // Mensagem do botão principal (genérica).
+  msgPrincipal: "Oi! Vi seu Instagram e quero um orçamento.",
+
+  // Cada serviço abre o WhatsApp com uma mensagem diferente.
+  // Assim você já sabe pelo que a pessoa chegou. Edite/adicione à vontade.
+  servicos: [
+    { titulo: "Site profissional", desc: "Presença sólida pro seu negócio", msg: "Oi! Quero um orçamento de site profissional." },
+    { titulo: "Landing page",      desc: "Página única focada em vender",     msg: "Oi! Quero uma landing page pra divulgar." },
+    { titulo: "Sistema sob medida", desc: "Automatize o que te toma tempo",   msg: "Oi! Quero um sistema pro meu negócio." },
+    { titulo: "Cardápio online",   desc: "Pra restaurante, bar ou delivery",  msg: "Oi! Quero um cardápio online." },
+  ],
+};
+
+/* =======================================================================
+   Daqui pra baixo você não precisa mexer.
+   encodeURIComponent() cuida do "URL encoding" (espaço, acento, emoji).
+   ======================================================================= */
+const waLink = (msg) =>
+  `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+
+// preenche cabeçalho
+document.getElementById("handle").textContent = CONFIG.handle;
+document.getElementById("mono").textContent = CONFIG.monogram;
+
+// CTA principal + preview da mensagem
+const cta = document.getElementById("cta");
+cta.href = waLink(CONFIG.msgPrincipal);
+document.getElementById("previewText").textContent = `“${CONFIG.msgPrincipal}”`;
+
+// portfólio
+document.getElementById("portfolio").href = CONFIG.portfolio;
+
+// botões de serviço
+const box = document.getElementById("services");
+CONFIG.servicos.forEach((s) => {
+  const a = document.createElement("a");
+  a.className = "svc";
+  a.href = waLink(s.msg);
+  a.setAttribute("data-cta", s.titulo);
+  a.innerHTML = `
+    <span>
+      <span class="t">${s.titulo}</span>
+      <span class="d">${s.desc}</span>
+    </span>
+    <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>`;
+  box.appendChild(a);
+});
+</script>
+</body>
+</html>
